@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtensionManifest Version="7.0"
+    ExtensionBundleId="com.proscriptrunner.dualhost"
+    ExtensionBundleVersion="1.3.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ExtensionList>
+        <Extension Id="com.proscriptrunner.dualhost.panel" Version="1.0.0"/>
+    </ExtensionList>
+
+    <ExecutionEnvironment>
+        <HostList>
+            <Host Name="PHXS" Version="[14.0,99.9]"/>
+            <Host Name="PHSP" Version="[14.0,99.9]"/>
+            <Host Name="ILST" Version="[17.0,99.9]"/>
+        </HostList>
+        <LocaleList>
+            <Locale Code="All"/>
+        </LocaleList>
+        <RequiredRuntimeList>
+            <RequiredRuntime Name="CSXS" Version="6.0"/>
+        </RequiredRuntimeList>
+    </ExecutionEnvironment>
+
+    <DispatchInfoList>
+        <Extension Id="com.proscriptrunner.dualhost.panel">
+            <DispatchInfo>
+                <Resources>
+                    <MainPath>./index.html</MainPath>
+                    <ScriptPath>./jsx/host.jsx</ScriptPath>
+                    <CEFCommandLine>
+                        <Parameter>--allow-file-access-from-files</Parameter>
+                    </CEFCommandLine>
+                </Resources>
+                <Lifecycle>
+                    <AutoVisible>false</AutoVisible>
+                </Lifecycle>
+                <UI>
+                    <Type>Panel</Type>
+                    <Menu>Pro Script Runner</Menu>
+                    <Geometry>
+                        <Size>
+                            <Width>380</Width>
+                            <Height>650</Height>
+                        </Size>
+                        <MinSize>
+                            <Width>320</Width>
+                            <Height>520</Height>
+                        </MinSize>
+                        <MaxSize>
+                            <Width>700</Width>
+                            <Height>1000</Height>
+                        </MaxSize>
+                    </Geometry>
+                    <Icons>
+                        <Icon Type="Normal">./assets/icon.png</Icon>
+                        <Icon Type="RollOver">./assets/icon.png</Icon>
+                        <Icon Type="DarkNormal">./assets/icon.png</Icon>
+                        <Icon Type="DarkRollOver">./assets/icon.png</Icon>
+                    </Icons>
+                </UI>
+            </DispatchInfo>
+        </Extension>
+    </DispatchInfoList>
+</ExtensionManifest>

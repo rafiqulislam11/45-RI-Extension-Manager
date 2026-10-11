@@ -1,0 +1,222 @@
+{
+  "version": "3.1.0",
+  "target": "Adobe Photoshop 2020-2026 & Illustrator",
+  "scripts": [
+    {
+      "id": "doc-info",
+      "category": "Image",
+      "name": "Document Information",
+      "cost": 1
+    },
+    {
+      "id": "upscale-2x",
+      "category": "Image",
+      "name": "Image Upscale 2×",
+      "cost": 8
+    },
+    {
+      "id": "upscale-4k",
+      "category": "Image",
+      "name": "Upscale to 4K UHD",
+      "cost": 12
+    },
+    {
+      "id": "upscale-8k",
+      "category": "Image",
+      "name": "Upscale to 8K UHD",
+      "cost": 18
+    },
+    {
+      "id": "upscale-custom",
+      "category": "Image",
+      "name": "Custom Long-Edge Upscale",
+      "cost": 10
+    },
+    {
+      "id": "image-to-gradient",
+      "category": "Image",
+      "name": "Image to Gradient",
+      "cost": 6
+    },
+    {
+      "id": "enhance",
+      "category": "Image",
+      "name": "AI-Style Enhance",
+      "cost": 7
+    },
+    {
+      "id": "auto-enhance",
+      "category": "Image",
+      "name": "Auto Tone + Contrast + Color",
+      "cost": 4
+    },
+    {
+      "id": "add-noise",
+      "category": "Image",
+      "name": "Add Noise",
+      "cost": 3
+    },
+    {
+      "id": "add-grain",
+      "category": "Image",
+      "name": "Add Film Grain",
+      "cost": 3
+    },
+    {
+      "id": "sharpen",
+      "category": "Image",
+      "name": "Smart Sharpen",
+      "cost": 5
+    },
+    {
+      "id": "vibrance",
+      "category": "Image",
+      "name": "Vibrance Boost",
+      "cost": 4
+    },
+    {
+      "id": "grayscale",
+      "category": "Image",
+      "name": "Black & White",
+      "cost": 2
+    },
+    {
+      "id": "trim",
+      "category": "Image",
+      "name": "Trim Transparent Pixels",
+      "cost": 2
+    },
+    {
+      "id": "fit-canvas",
+      "category": "Image",
+      "name": "Fit Canvas to Preset",
+      "cost": 3
+    },
+    {
+      "id": "resize-image",
+      "category": "Image",
+      "name": "Resize Image",
+      "cost": 4
+    },
+    {
+      "id": "convert-rgb8",
+      "category": "Image",
+      "name": "Convert to RGB 8-bit",
+      "cost": 2
+    },
+    {
+      "id": "stock-quality-check",
+      "category": "Stock",
+      "name": "Adobe Stock Quality Check",
+      "cost": 3
+    },
+    {
+      "id": "stock-prep",
+      "category": "Stock",
+      "name": "Stock Prep Checklist",
+      "cost": 4
+    },
+    {
+      "id": "remove-hidden",
+      "category": "Layer",
+      "name": "Remove Hidden Layers",
+      "cost": 2
+    },
+    {
+      "id": "cleanup-empty",
+      "category": "Layer",
+      "name": "Cleanup Empty Layers",
+      "cost": 2
+    },
+    {
+      "id": "duplicate-layer",
+      "category": "Layer",
+      "name": "Duplicate Active Layer",
+      "cost": 2
+    },
+    {
+      "id": "flatten",
+      "category": "Layer",
+      "name": "Flatten Image",
+      "cost": 3
+    },
+    {
+      "id": "watermark",
+      "category": "Layer",
+      "name": "Add Watermark Text",
+      "cost": 4
+    },
+    {
+      "id": "export-jpg",
+      "category": "Export",
+      "name": "Export Active Document as JPG",
+      "cost": 5
+    },
+    {
+      "id": "export-png",
+      "category": "Export",
+      "name": "Export Active Document as PNG",
+      "cost": 5
+    },
+    {
+      "id": "export-web",
+      "category": "Export",
+      "name": "Quick Web JPG",
+      "cost": 5
+    },
+    {
+      "id": "export-stock-jpg",
+      "category": "Export",
+      "name": "Stock High-Quality JPG",
+      "cost": 6
+    },
+    {
+      "id": "save-copy-psd",
+      "category": "Export",
+      "name": "Save Copy as PSD",
+      "cost": 5
+    },
+    {
+      "id": "batch-jpg",
+      "category": "Batch",
+      "name": "Batch JPG Export",
+      "cost": 10
+    },
+    {
+      "id": "batch-upscale",
+      "category": "Batch",
+      "name": "Batch Upscale 2×",
+      "cost": 15
+    },
+    {
+      "id": "batch-upscale-4k",
+      "category": "Batch",
+      "name": "Batch Upscale to 4K",
+      "cost": 22
+    },
+    {
+      "id": "batch-upscale-8k",
+      "category": "Batch",
+      "name": "Batch Upscale to 8K",
+      "cost": 30
+    },
+    {
+      "id": "batch-web",
+      "category": "Batch",
+      "name": "Batch Web JPG",
+      "cost": 12
+    },
+    {
+      "id": "batch-rename",
+      "category": "Batch",
+      "name": "Batch Rename Files",
+      "cost": 5
+    },
+    {
+      "id": "contact-sheet",
+      "category": "Batch",
+      "name": "Contact Sheet",
+      "cost": 12
+    }
+  ]
+}

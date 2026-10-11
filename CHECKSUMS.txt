@@ -1,0 +1,11 @@
+﻿# RI Extension Manager v3.1.0 â€” Release Checksums (SHA-256)
+# Generated: 2026-10-11 18:36:59
+
+Release Archive:
+C8ECAB52013D8D4424FF41CA8A8C241E3236D3C0AC6CD66135514E9FA963899B  RI-Extension-Manager-v3.1.0-Release.zip  (177610 bytes)
+
+Installer Executable:
+4FB3B1792686ABFBB73D09CB8E196F4FEACA50635A4752D1E19781FAA2E4E0DB  RI-Extension-Installer.exe  (19456 bytes)
+
+Adobe ZXP Archive:
+80433429BAC30A95753CE854F7A478D830F53CA6622BBEC23A1900A5F59A48C1  Installer/ProScriptRunner_Adobe_DualHost_v1.3.zxp  (63395 bytes)

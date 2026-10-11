@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pro Script Runner — RI Extension Manager</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- TOP HEADER -->
+  <header class="app-header">
+    <div class="header-brand">
+      <span class="brand-icon">&#9889;</span>
+      <div class="brand-text">
+        <h1 class="brand-title">Pro Script Runner</h1>
+        <span class="brand-sub">RI Extension Manager v3.1</span>
+      </div>
+    </div>
+    <div class="header-actions">
+      <span id="hostStatusBadge" class="host-badge status-offline">&#9679; Checking...</span>
+      <button id="settingsBtn" class="btn-icon" title="Settings">&#9881;</button>
+    </div>
+  </header>
+
+  <!-- ACTIVE DOCUMENT STATUS BAR -->
+  <section class="doc-status-section" id="docStatusSection">
+    <div class="doc-status-card">
+      <div class="doc-icon-wrap" id="docIconWrap">&#128444;</div>
+      <div class="doc-info-wrap">
+        <div class="doc-title-row">
+          <span id="docName" class="doc-name">Checking host...</span>
+          <span id="docSaveBadge" class="doc-badge badge-unsaved" style="display:none">Unsaved</span>
+        </div>
+        <div id="docDetails" class="doc-details">Connecting to Adobe host engine...</div>
+      </div>
+      <button id="refreshDocBtn" class="btn-icon btn-refresh" title="Refresh Document Info">&#8635;</button>
+    </div>
+  </section>
+
+  <!-- SEARCH & FILTER BAR -->
+  <div class="filter-bar">
+    <div class="search-wrap">
+      <span class="search-icon">&#128269;</span>
+      <input id="scriptSearchInput" type="text" placeholder="Search automations..." class="search-input">
+      <button id="clearSearchBtn" class="clear-btn" style="display:none">&#215;</button>
+    </div>
+    <select id="categorySelect" class="cat-select">
+      <option value="all">All Categories</option>
+      <option value="Image">&#127760; Image</option>
+      <option value="Stock">&#128200; Stock Pre-flight</option>
+      <option value="Layer">&#128203; Layer</option>
+      <option value="Export">&#128228; Export</option>
+      <option value="Batch">&#128230; Batch</option>
+      <option value="Illustrator">&#9998; Illustrator</option>
+    </select>
+  </div>
+
+  <!-- WORKFLOW SCRIPT GRID / LIST -->
+  <main class="workflow-area">
+    <div class="section-meta-row">
+      <span id="workflowCount" class="count-badge">Loading automations...</span>
+      <span id="hostNotice" class="host-notice"></span>
+    </div>
+    <div id="workflowGrid" class="workflow-grid"></div>
+  </main>
+
+  <!-- ACTION & PARAMETER CONTROLS BAR -->
+  <footer class="action-footer" id="actionFooter" style="display:none">
+    <div class="action-header">
+      <div class="action-title-wrap">
+        <span id="selectedActionName" class="action-name">Select an automation</span>
+        <span id="selectedActionCat" class="action-tag">Image</span>
+      </div>
+      <button id="closeActionBtn" class="btn-icon" title="Deselect">&#215;</button>
+    </div>
+
+    <p id="selectedActionDesc" class="action-desc"></p>
+
+    <!-- Dynamic parameter fields -->
+    <div id="paramContainer" class="param-container" style="display:none">
+      <!-- Watermark input -->
+      <div id="paramWatermark" class="param-row" style="display:none">
+        <label for="watermarkTextInput" class="param-label">Watermark Text:</label>
+        <input id="watermarkTextInput" type="text" class="param-input" value="Rafiqul Islam">
+      </div>
+      <!-- Preset dropdown -->
+      <div id="paramPreset" class="param-row" style="display:none">
+        <label for="presetSelect" class="param-label">Canvas Preset:</label>
+        <select id="presetSelect" class="param-input">
+          <option value="1">1080×1080 (Square 1:1)</option>
+          <option value="2">1080×1350 (Portrait 4:5)</option>
+          <option value="3">1080×1920 (Story / Reel 9:16)</option>
+          <option value="4">1200×628 (Landscape 1.91:1)</option>
+          <option value="5">1920×1080 (Full HD 16:9)</option>
+        </select>
+      </div>
+      <!-- Custom Dimensions -->
+      <div id="paramDimensions" class="param-row" style="display:none">
+        <label class="param-label">Target Size (px):</label>
+        <div class="dim-inputs">
+          <input id="resizeWidthInput" type="number" class="param-input" placeholder="Width" min="10">
+          <span>&times;</span>
+          <input id="resizeHeightInput" type="number" class="param-input" placeholder="Height" min="10">
+        </div>
+      </div>
+      <!-- Custom Long Edge -->
+      <div id="paramLongEdge" class="param-row" style="display:none">
+        <label for="longEdgeInput" class="param-label">Max Long Edge (px):</label>
+        <input id="longEdgeInput" type="number" class="param-input" value="3840" min="100">
+      </div>
+      <!-- Noise Amount -->
+      <div id="paramNoise" class="param-row" style="display:none">
+        <label for="noiseAmountInput" class="param-label">Noise Amount (%):</label>
+        <input id="noiseAmountInput" type="number" class="param-input" value="4" min="0.1" max="20" step="0.5">
+      </div>
+    </div>
+
+    <!-- Execution trigger -->
+    <div class="action-buttons-row">
+      <button id="runBtn" class="btn-primary btn-run">
+        <span class="btn-icon-run">&#9654;</span>
+        <span id="runBtnText">RUN AUTOMATION</span>
+      </button>
+    </div>
+  </footer>
+
+  <!-- ACTIVITY LOG DRAWER -->
+  <section class="log-section">
+    <div class="log-header" id="logToggleHeader">
+      <div class="log-title-wrap">
+        <span class="log-icon">&#128221;</span>
+        <span class="log-title">Activity Log</span>
+      </div>
+      <div class="log-actions">
+        <button id="clearLogBtn" class="btn-text">Clear</button>
+        <span id="logToggleIcon" class="log-arrow">&#9662;</span>
+      </div>
+    </div>
+    <div id="resultLog" class="result-log"></div>
+  </section>
+
+  <!-- MODAL DIALOG -->
+  <div class="modal-overlay hidden" id="modalOverlay">
+    <div class="modal-box">
+      <div class="modal-icon" id="modalIcon">&#9888;</div>
+      <h2 class="modal-title" id="modalTitle">Notice</h2>
+      <div class="modal-msg" id="modalMsg"></div>
+      <div class="modal-actions">
+        <button class="btn-secondary" id="modalCancel" style="display:none">Cancel</button>
+        <button class="btn-primary" id="modalOk">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SETTINGS MODAL -->
+  <div class="modal-overlay hidden" id="settingsModal">
+    <div class="modal-box">
+      <div class="modal-head-row">
+        <h2 class="modal-title">Preferences</h2>
+        <button class="icon-close" id="closeSettings">&#215;</button>
+      </div>
+      <label class="field-label" for="defaultWatermarkInput">Default Watermark Text</label>
+      <input id="defaultWatermarkInput" type="text" class="field-input" value="Rafiqul Islam">
+
+      <div class="setting-check-row">
+        <input id="autoRefreshCheck" type="checkbox" checked>
+        <label for="autoRefreshCheck" class="check-label">Auto-refresh document info on window focus</label>
+      </div>
+
+      <div class="setting-info-box">
+        <p><strong>Host Environment:</strong> <span id="settingsHostInfo">-</span></p>
+        <p><strong>Bundle ID:</strong> com.proscriptrunner.dualhost</p>
+        <p><strong>Architecture:</strong> Adobe CEP (HTML5 / ExtendScript)</p>
+      </div>
+
+      <button class="btn-primary" id="saveSettings" style="width:100%;margin-top:12px">SAVE PREFERENCES</button>
+    </div>
+  </div>
+
+  <script src="CSInterface.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

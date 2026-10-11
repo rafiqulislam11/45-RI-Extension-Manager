@@ -1,0 +1,3 @@
+#target photoshop
+if(!app.documents.length){alert("No document is open.");}
+else{var txt=prompt("Watermark text:","Rafiqul Islam");if(txt){var d=app.activeDocument,l=d.artLayers.add();l.kind=LayerKind.TEXT;l.name="ProScript Watermark";l.textItem.contents=txt;l.textItem.size=UnitValue(36,"px");l.textItem.position=[UnitValue(d.width.as("px")-260,"px"),UnitValue(d.height.as("px")-50,"px")];l.opacity=45;alert("Watermark added.");}}
