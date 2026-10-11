@@ -36,7 +36,7 @@
                 </Lifecycle>
                 <UI>
                     <Type>Panel</Type>
-                    <Menu>Pro Script Runner</Menu>
+                    <Menu>RI Extension Manager</Menu>
                     <Geometry>
                         <Size>
                             <Width>380</Width>

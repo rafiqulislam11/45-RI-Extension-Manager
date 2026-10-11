@@ -407,6 +407,24 @@ namespace RIExtensionInstaller
                         Log("Cleaned legacy duplicate: " + p);
                     }
                 }
+                if (Directory.Exists(extRoot))
+                {
+                    foreach (string d in Directory.GetDirectories(extRoot, "com.proscriptrunner.dualhost.backup*"))
+                    {
+                        try { Directory.Delete(d, true); Log("Cleaned legacy backup: " + d); } catch {}
+                    }
+                }
+                string[] commonDirs = new string[] {
+                    @"C:\Program Files (x86)\Common Files\Adobe\CEP\extensions\com.proscriptrunner.extension",
+                    @"C:\Program Files\Common Files\Adobe\CEP\extensions\com.proscriptrunner.extension"
+                };
+                foreach (string cd in commonDirs)
+                {
+                    if (Directory.Exists(cd))
+                    {
+                        try { Directory.Delete(cd, true); Log("Cleaned system zombie extension: " + cd); } catch {}
+                    }
+                }
             }
             catch (Exception ex)
             {

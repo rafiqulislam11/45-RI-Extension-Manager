@@ -46,13 +46,22 @@ echo  [3/4] Copying extension files to per-user directory...
 set "SRC=%~dp0"
 set "DEST=!CEPDIR!\com.proscriptrunner.dualhost"
 
-:: Remove old installs if exist
+:: Remove old installs and conflicting duplicates if exist
 if exist "!DEST!" (
     echo  [..] Updating existing installation...
     rd /s /q "!DEST!" 2>nul
 )
 if exist "!CEPDIR!\ProScriptRunner_DualHost" (
     rd /s /q "!CEPDIR!\ProScriptRunner_DualHost" 2>nul
+)
+for /d %%D in ("!CEPDIR!\com.proscriptrunner.dualhost.backup*") do (
+    rd /s /q "%%D" 2>nul
+)
+if exist "C:\Program Files (x86)\Common Files\Adobe\CEP\extensions\com.proscriptrunner.extension" (
+    rd /s /q "C:\Program Files (x86)\Common Files\Adobe\CEP\extensions\com.proscriptrunner.extension" 2>nul
+)
+if exist "C:\Program Files\Common Files\Adobe\CEP\extensions\com.proscriptrunner.extension" (
+    rd /s /q "C:\Program Files\Common Files\Adobe\CEP\extensions\com.proscriptrunner.extension" 2>nul
 )
 
 :: Create destination

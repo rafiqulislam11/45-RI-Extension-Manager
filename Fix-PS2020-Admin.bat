@@ -11,9 +11,17 @@ echo.
 echo Closing background Photoshop processes...
 taskkill /f /im Photoshop.exe >nul 2>&1
 
-:: Fix extension folder if renamed to .disabled
+:: Fix extension folder if renamed to .disabled or duplicates exist
 powershell -NoProfile -Command "if (Test-Path '$env:APPDATA\Adobe\CEP\extensions\com.proscriptrunner.dualhost.disabled') { Rename-Item '$env:APPDATA\Adobe\CEP\extensions\com.proscriptrunner.dualhost.disabled' 'com.proscriptrunner.dualhost' -Force }" >nul 2>&1
 powershell -NoProfile -Command "if (Test-Path '$env:APPDATA\Adobe\CEP\extensions\ProScriptRunner_DualHost.disabled') { Rename-Item '$env:APPDATA\Adobe\CEP\extensions\ProScriptRunner_DualHost.disabled' 'ProScriptRunner_DualHost' -Force }" >nul 2>&1
+powershell -NoProfile -Command "Get-ChildItem -Path '$env:APPDATA\Adobe\CEP\extensions' -Filter 'com.proscriptrunner.dualhost.backup*' -Directory | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue" >nul 2>&1
+if exist "C:\Program Files (x86)\Common Files\Adobe\CEP\extensions\com.proscriptrunner.extension" (
+    echo Removing conflicting old system extension...
+    rd /s /q "C:\Program Files (x86)\Common Files\Adobe\CEP\extensions\com.proscriptrunner.extension" >nul 2>&1
+)
+if exist "C:\Program Files\Common Files\Adobe\CEP\extensions\com.proscriptrunner.extension" (
+    rd /s /q "C:\Program Files\Common Files\Adobe\CEP\extensions\com.proscriptrunner.extension" >nul 2>&1
+)
 
 :: Set HKCU keys
 echo Setting HKCU registry keys (CSXS 4-20)...
